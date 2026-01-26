@@ -1,7 +1,7 @@
 import React from "react";
-import { Shield, Upload } from "lucide-react";
+import { Shield } from "lucide-react";
 
-const DashboardHeader = ({ portfolioStats, onImageUpload }) => {
+const DashboardHeader = ({ portfolioStats }) => {
   return (
     <div className="mb-6">
       <div className="flex items-center justify-between mb-4">
@@ -14,22 +14,6 @@ const DashboardHeader = ({ portfolioStats, onImageUpload }) => {
             Automated regulatory audit analysis across {portfolioStats.total}{" "}
             loan files
           </p>
-        </div>
-        <div>
-          <input
-            type="file"
-            id="imageUpload"
-            accept="image/*"
-            className="hidden"
-            onChange={onImageUpload}
-          />
-          <button
-            onClick={() => document.getElementById("imageUpload").click()}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center gap-2"
-          >
-            <Upload className="w-5 h-5" />
-            Upload Document Image
-          </button>
         </div>
       </div>
     </div>

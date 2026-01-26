@@ -48,7 +48,6 @@ const MortgageComplianceDashboard = ({
   const [modalData, setModalData] = useState(null);
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [currentImageUrl, setCurrentImageUrl] = useState(null);
-  const [uploadedImage, setUploadedImage] = useState(null);
   const [branchModalData, setBranchModalData] = useState(null);
 
   const availableBranches = useMemo(() => getAvailableBranches(loans), [loans]);
@@ -250,18 +249,6 @@ const MortgageComplianceDashboard = ({
     }));
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setUploadedImage(event.target.result);
-        alert("Image uploaded successfully!");
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleOpenImageModal = (imageUrl) => {
     setCurrentImageUrl(imageUrl);
     setImageModalOpen(true);
@@ -277,7 +264,6 @@ const MortgageComplianceDashboard = ({
       <div className="max-w-[1600px] mx-auto">
         <DashboardHeader
           portfolioStats={portfolioStats}
-          onImageUpload={handleImageUpload}
         />
 
         <BranchComplianceChart
@@ -291,6 +277,9 @@ const MortgageComplianceDashboard = ({
           statePolicySets={statePolicySets}
         />
 
+        <h2 className="text-xl font-bold text-slate-900 mb-4">
+          Policy Compliance Testing Results
+        </h2>
         <BranchMLOFilters
           filters={filters}
           availableBranches={availableBranches}
@@ -335,7 +324,6 @@ const MortgageComplianceDashboard = ({
           modalData={modalData}
           onClose={closeModal}
           onLoanClick={handleLoanClick}
-          uploadedImage={uploadedImage}
           onOpenImageModal={handleOpenImageModal}
         />
 

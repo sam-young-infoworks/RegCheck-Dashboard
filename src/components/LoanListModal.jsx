@@ -1,6 +1,7 @@
 import React from "react";
 import { CheckCircle, AlertTriangle, AlertCircle } from "lucide-react";
 import { getStatusColor } from "../utils/statusHelpers";
+import sampleDocument from "../assets/sample-pdf.jpg";
 
 const getStatusIcon = (status) => {
   switch (status) {
@@ -19,7 +20,6 @@ const LoanListModal = ({
   modalData,
   onClose,
   onLoanClick,
-  uploadedImage,
   onOpenImageModal,
 }) => {
   if (!modalData) return null;
@@ -29,13 +29,7 @@ const LoanListModal = ({
   };
 
   const handlePdfClick = () => {
-    if (uploadedImage) {
-      onOpenImageModal(uploadedImage);
-    } else {
-      alert(
-        'Please upload a document image first using the "Upload Document Image" button at the top of the dashboard.',
-      );
-    }
+    onOpenImageModal(sampleDocument);
   };
 
   return (
