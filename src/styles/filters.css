@@ -1,0 +1,177 @@
+/* Filter Container Styles */
+.filter-container {
+  background: var(--card-background);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-slate-700);
+  letter-spacing: -0.01em;
+}
+
+/* Select Styles */
+.filter-select {
+  appearance: none;
+  padding: 0.5rem 2.25rem 0.5rem 0.875rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-slate-300);
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+  background-size: 14px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: var(--color-slate-700);
+  font-weight: 500;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.filter-select:hover {
+  border-color: var(--color-slate-400);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow:
+    0 0 0 3px rgba(59, 130, 246, 0.1),
+    0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Dropdown Button Styles */
+.filter-dropdown-button {
+  appearance: none;
+  padding: 0.5rem 2.25rem 0.5rem 0.875rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-slate-300);
+  background-color: var(--card-background);
+  cursor: pointer;
+  min-width: 140px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--color-slate-700);
+  font-weight: 500;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.filter-dropdown-button:hover {
+  border-color: var(--color-slate-400);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.filter-dropdown-button:focus {
+  outline: none;
+  border-color: var(--color-blue-500);
+  box-shadow:
+    0 0 0 3px rgba(59, 130, 246, 0.1),
+    0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.filter-dropdown-icon {
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-slate-400);
+  pointer-events: none;
+}
+
+/* Clear Button Styles */
+.filter-clear-button {
+  padding: 0.5rem 0.875rem;
+  background: var(--color-slate-600);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.filter-clear-button:hover {
+  background: var(--color-slate-700);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.filter-clear-button:active {
+  transform: translateY(1px);
+}
+
+/* Dropdown Menu Styles */
+.filter-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  margin-top: 0.25rem;
+  left: 0;
+  background: white;
+  border: 1px solid var(--color-slate-300);
+  border-radius: 8px;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  min-width: 140px;
+}
+
+.filter-dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.filter-dropdown-option:hover {
+  background-color: var(--color-slate-50);
+}
+
+.filter-dropdown-option:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.filter-dropdown-option:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.filter-dropdown-checkbox {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-blue-600);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-dropdown-checkbox:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.filter-dropdown-label {
+  font-size: 0.8125rem;
+  color: var(--color-slate-700);
+  font-weight: 500;
+}

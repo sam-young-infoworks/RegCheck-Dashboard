@@ -1,0 +1,79 @@
+/* Loan Details Table Sticky Headers */
+.table-header-sticky {
+  position: sticky;
+  z-index: 50;
+}
+
+.table-header-loan-id {
+  left: 0;
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.table-header-branch-id {
+  left: 100px;
+  width: 90px;
+  min-width: 90px;
+  max-width: 90px;
+}
+
+.table-header-mlo-nmls {
+  left: 190px;
+  width: 90px;
+  min-width: 90px;
+  max-width: 90px;
+}
+
+.table-header-type {
+  left: 280px;
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+
+.table-header-term {
+  left: 360px;
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+}
+
+.table-header-amort {
+  left: 420px;
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+
+.table-header-purpose {
+  left: 500px;
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.table-header-occupancy {
+  left: 600px;
+  width: 110px;
+  min-width: 110px;
+  max-width: 110px;
+}
+
+.table-header-amount {
+  left: 710px;
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Table cell styles for body */
+.table-cell-sticky {
+  position: sticky;
+  z-index: 40;
+}
+
+.table-cell-shadow {
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}

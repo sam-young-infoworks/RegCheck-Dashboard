@@ -11,7 +11,7 @@ const LoanDetailsTable = ({
 }) => {
   if (!showLoanTable) {
     return (
-      <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+      <div className="loan-table-container">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-slate-900">
             Loan File Details
@@ -28,7 +28,7 @@ const LoanDetailsTable = ({
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+    <div className="loan-table-container">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-slate-900">Loan File Details</h3>
         <button
@@ -49,10 +49,7 @@ const LoanDetailsTable = ({
         />
 
         <div className="flex border border-slate-200 rounded mb-2">
-          <div
-            className="flex-shrink-0 bg-slate-100 border-r-2 border-slate-400"
-            style={{ width: "830px" }}
-          ></div>
+          <div className="flex-shrink-0 bg-slate-100 border-r-2 border-slate-400 table-fixed-column"></div>
           <div
             className="flex-1 overflow-x-auto"
             onScroll={(e) => {
@@ -62,14 +59,13 @@ const LoanDetailsTable = ({
               }
             }}
           >
-            <div style={{ width: "5000px", height: "1px" }}></div>
+            <div className="table-spacer"></div>
           </div>
         </div>
 
         <div
           id="loan-table-scroll"
-          className="overflow-x-auto border border-slate-200 rounded-lg"
-          style={{ position: "relative" }}
+          className="overflow-x-auto border border-slate-200 rounded-lg table-position-relative"
           onScroll={(e) => {
             const topScrollContainer = e.target.parentElement.querySelector(
               ".flex > div:last-child",
@@ -79,136 +75,60 @@ const LoanDetailsTable = ({
             }
           }}
         >
-          <table
-            className="w-full border-collapse"
-            style={{ position: "relative" }}
-          >
+          <table className="w-full border-collapse table-position-relative">
             <thead className="bg-slate-100">
               <tr className="border-b border-slate-300">
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: 0,
-                    zIndex: 50,
-                    width: "100px",
-                    minWidth: "100px",
-                    maxWidth: "100px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-loan-id"
                 >
                   Loan ID
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "100px",
-                    zIndex: 50,
-                    width: "90px",
-                    minWidth: "90px",
-                    maxWidth: "90px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-branch-id"
                 >
                   Branch ID
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "190px",
-                    zIndex: 50,
-                    width: "90px",
-                    minWidth: "90px",
-                    maxWidth: "90px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-mlo-nmls"
                 >
                   MLO NMLS
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "280px",
-                    zIndex: 50,
-                    width: "80px",
-                    minWidth: "80px",
-                    maxWidth: "80px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-type"
                 >
                   Type
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "360px",
-                    zIndex: 50,
-                    width: "60px",
-                    minWidth: "60px",
-                    maxWidth: "60px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-term"
                 >
                   Term
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "420px",
-                    zIndex: 50,
-                    width: "80px",
-                    minWidth: "80px",
-                    maxWidth: "80px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-amort"
                 >
                   Amort
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "500px",
-                    zIndex: 50,
-                    width: "100px",
-                    minWidth: "100px",
-                    maxWidth: "100px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-purpose"
                 >
                   Purpose
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "600px",
-                    zIndex: 50,
-                    width: "110px",
-                    minWidth: "110px",
-                    maxWidth: "110px",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r border-slate-300 bg-slate-100 table-header-sticky table-header-occupancy"
                 >
                   Occupancy
                 </th>
                 <th
                   rowSpan="2"
-                  style={{
-                    position: "sticky",
-                    left: "710px",
-                    zIndex: 50,
-                    width: "120px",
-                    minWidth: "120px",
-                    maxWidth: "120px",
-                    boxShadow: "2px 0 4px rgba(0,0,0,0.1)",
-                  }}
-                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r-2 border-slate-400 bg-slate-100"
+                  className="px-3 py-3 text-left text-xs font-bold text-slate-700 border-r-2 border-slate-400 bg-slate-100 table-header-sticky table-header-amount"
                 >
                   Amount
                 </th>
@@ -242,8 +162,7 @@ const LoanDetailsTable = ({
                   policy.rules.map((rule, idx) => (
                     <th
                       key={`${policy.name}-${rule}`}
-                      className={`px-2 py-2 text-center text-xs font-semibold text-slate-600 border-r border-slate-300 ${policyIndex === 0 && idx === 0 ? "border-l-2 border-l-slate-400" : ""}`}
-                      style={{ minWidth: "80px" }}
+                      className={`px-2 py-2 text-center text-xs font-semibold text-slate-600 border-r border-slate-300 table-cell-min-width ${policyIndex === 0 && idx === 0 ? "border-l-2 border-l-slate-400" : ""}`}
                       title={`${policy.name} - ${rule}`}
                     >
                       <div className="font-bold text-emerald-700">
@@ -257,8 +176,7 @@ const LoanDetailsTable = ({
                   policy.rules.map((rule, idx) => (
                     <th
                       key={`state-${policy.name}-${rule}`}
-                      className={`px-2 py-2 text-center text-xs font-semibold text-slate-600 border-r border-slate-300 ${policyIdx === 0 && idx === 0 ? "border-l-2 border-l-slate-400" : ""}`}
-                      style={{ minWidth: "80px" }}
+                      className={`px-2 py-2 text-center text-xs font-semibold text-slate-600 border-r border-slate-300 table-cell-min-width ${policyIdx === 0 && idx === 0 ? "border-l-2 border-l-slate-400" : ""}`}
                       title={`${policy.state} - ${policy.name} - ${rule}`}
                     >
                       <div className="font-bold text-amber-700">
@@ -277,122 +195,31 @@ const LoanDetailsTable = ({
                   id={`loan-${loan.id}`}
                   className="group hover:bg-slate-50 transition-colors"
                 >
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: 0,
-                      zIndex: 40,
-                      width: "100px",
-                      minWidth: "100px",
-                      maxWidth: "100px",
-                    }}
-                    className="px-3 py-2 text-xs font-semibold text-slate-900 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs font-semibold text-slate-900 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-loan-id">
                     {loan.id}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "100px",
-                      zIndex: 40,
-                      width: "90px",
-                      minWidth: "90px",
-                      maxWidth: "90px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-branch-id">
                     {loan.branchId}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "190px",
-                      zIndex: 40,
-                      width: "90px",
-                      minWidth: "90px",
-                      maxWidth: "90px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-mlo-nmls">
                     {loan.mloNmlsId}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "280px",
-                      zIndex: 40,
-                      width: "80px",
-                      minWidth: "80px",
-                      maxWidth: "80px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-type">
                     {loan.loanType}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "360px",
-                      zIndex: 40,
-                      width: "60px",
-                      minWidth: "60px",
-                      maxWidth: "60px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-term">
                     {loan.loanTerm}y
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "420px",
-                      zIndex: 40,
-                      width: "80px",
-                      minWidth: "80px",
-                      maxWidth: "80px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-amort">
                     {loan.amortizationType}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "500px",
-                      zIndex: 40,
-                      width: "100px",
-                      minWidth: "100px",
-                      maxWidth: "100px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-purpose">
                     {loan.purpose}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "600px",
-                      zIndex: 40,
-                      width: "110px",
-                      minWidth: "110px",
-                      maxWidth: "110px",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r border-slate-200 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-occupancy">
                     {loan.occupancy}
                   </td>
-                  <td
-                    style={{
-                      position: "sticky",
-                      left: "710px",
-                      zIndex: 40,
-                      width: "120px",
-                      minWidth: "120px",
-                      maxWidth: "120px",
-                      boxShadow: "2px 0 4px rgba(0,0,0,0.1)",
-                    }}
-                    className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r-2 border-slate-300 bg-white group-hover:bg-slate-50"
-                  >
+                  <td className="px-3 py-2 text-xs text-slate-700 whitespace-nowrap border-r-2 border-slate-300 bg-white group-hover:bg-slate-50 table-cell-sticky table-header-amount table-cell-shadow">
                     ${loan.amount.toLocaleString()}
                   </td>
                   <td className="px-2 py-2 text-center border-r-2 border-slate-300">

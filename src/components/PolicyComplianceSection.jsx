@@ -9,20 +9,20 @@ import {
 
 const PolicyComplianceSection = ({
   policyStats,
-  expandedPolicy,
+  expandedPolicies,
   onTogglePolicy,
   onOpenModal,
   isState = false,
 }) => {
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200 mb-6">
+    <div className="policy-section-container">
       <h3 className="text-xl font-bold text-slate-900 mb-4">
-        {isState ? "State Policy - Iowa (IA)" : "Federal Policy"}
+        {isState ? "State Policies - Iowa (IA)" : "Federal Policies"}
       </h3>
       <div className="space-y-2">
         {policyStats.map((policy) => {
           const policyKey = isState ? `state-${policy.name}` : policy.name;
-          const isExpanded = expandedPolicy === policyKey;
+          const isExpanded = expandedPolicies.has(policyKey);
 
           return (
             <div

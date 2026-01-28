@@ -10,7 +10,7 @@ const DashboardHeader = ({ portfolioStats }) => {
             <Shield className="w-10 h-10 text-blue-600" />
             Mortgage Compliance Dashboard - Iowa
           </h1>
-          <p className="text-slate-600 text-lg">
+          <p className="text-slate-600 text-base">
             Automated regulatory audit analysis across {portfolioStats.total}{" "}
             loan files
           </p>
