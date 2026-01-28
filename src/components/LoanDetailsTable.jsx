@@ -11,7 +11,7 @@ const LoanDetailsTable = ({
 }) => {
   if (!showLoanTable) {
     return (
-      <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+      <div className="loan-table-container">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-slate-900">
             Loan File Details
@@ -28,7 +28,7 @@ const LoanDetailsTable = ({
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200">
+    <div className="loan-table-container">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-slate-900">Loan File Details</h3>
         <button

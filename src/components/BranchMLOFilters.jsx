@@ -19,19 +19,14 @@ const BranchMLOFilters = ({
       >
         Policy Compliance Testing Results
       </h2>
-      <div
-        id="branch-mlo-filters"
-        className="bg-white rounded-xl p-4 shadow-md border border-slate-200 mb-4"
-      >
-        <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-sm font-semibold text-slate-700">
-            Branch/MLO Filters:
-          </span>
+      <div id="branch-mlo-filters" className="filter-container">
+        <div className="filter-wrapper">
+          <span className="filter-label">Branch/MLO Filters:</span>
 
           <select
             value={filters.branch}
             onChange={(e) => onFilterChange("branch", e.target.value)}
-            className="px-4 py-2 rounded-lg border border-slate-300 hover:border-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white cursor-pointer text-sm"
+            className="filter-select"
           >
             <option value="">All Branches</option>
             {availableBranches.map((branch) => (
@@ -44,7 +39,7 @@ const BranchMLOFilters = ({
           <select
             value={filters.mlo}
             onChange={(e) => onFilterChange("mlo", e.target.value)}
-            className="px-4 py-2 rounded-lg border border-slate-300 hover:border-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white cursor-pointer text-sm"
+            className="filter-select"
           >
             <option value="">All MLOs</option>
             {availableMLOs.map((mlo) => (
@@ -55,10 +50,7 @@ const BranchMLOFilters = ({
           </select>
 
           {(filters.branch || filters.mlo) && (
-            <button
-              onClick={handleClear}
-              className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors text-sm font-semibold"
-            >
+            <button onClick={handleClear} className="filter-clear-button">
               Clear Branch & MLO
             </button>
           )}

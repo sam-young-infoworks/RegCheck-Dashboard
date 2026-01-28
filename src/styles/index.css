@@ -1,5 +1,7 @@
 @import "./table.css";
 @import "./heatmap.css";
+@import "./chart.css";
+@import "./filters.css";
 
 @tailwind base;
 @tailwind components;
@@ -40,6 +42,8 @@
   --color-lime-500: #84cc16;
   --color-red-400: #f87171;
   --color-red-500: #ef4444;
+
+  --card-background: linear-gradient(135deg, #ffffff 0%, #fcfdfe 100%);
 
   /* Heatmap Colors */
   --heatmap-green: #10b981;
@@ -129,6 +133,18 @@ body {
 .image-zoom-container {
   max-width: 90vw;
   max-height: 90vh;
+}
+
+/* Policy and Table Container Styles */
+.policy-section-container,
+.loan-table-container {
+  background: var(--card-background);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.5rem;
 }
 
 /* Loan Link Button */
