@@ -1,6 +1,102 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 
 const BranchMLOModal = ({ branchModalData, onClose, onMLOClick }) => {
+  const [sortColumn, setSortColumn] = useState("total");
+  const [sortDirection, setSortDirection] = useState("desc");
+
+  const handleSort = (column) => {
+    if (sortColumn === column) {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    } else {
+      setSortColumn(column);
+      setSortDirection("desc");
+    }
+  };
+
+  const sortedMloData = useMemo(() => {
+    if (!branchModalData?.mloData) return [];
+
+    const sorted = [...branchModalData.mloData].sort((a, b) => {
+      let aVal, bVal;
+
+      switch (sortColumn) {
+        case "mloId":
+          aVal = a.mloId;
+          bVal = b.mloId;
+          break;
+        case "total":
+          aVal = a.total;
+          bVal = b.total;
+          break;
+        case "passed":
+          aVal = a.passed;
+          bVal = b.passed;
+          break;
+        case "warned":
+          aVal = a.warned;
+          bVal = b.warned;
+          break;
+        case "failed":
+          aVal = a.failed;
+          bVal = b.failed;
+          break;
+        case "passRate":
+          aVal = parseFloat(a.passRate);
+          bVal = parseFloat(b.passRate);
+          break;
+        case "warnRate":
+          aVal = parseFloat(a.warnRate);
+          bVal = parseFloat(b.warnRate);
+          break;
+        case "failRate":
+          aVal = parseFloat(a.failRate);
+          bVal = parseFloat(b.failRate);
+          break;
+        default:
+          return 0;
+      }
+
+      if (aVal < bVal) return sortDirection === "asc" ? -1 : 1;
+      if (aVal > bVal) return sortDirection === "asc" ? 1 : -1;
+      return 0;
+    });
+
+    return sorted;
+  }, [branchModalData?.mloData, sortColumn, sortDirection]);
+
+  const SortIcon = ({ column }) => {
+    if (sortColumn !== column) {
+      return (
+        <svg
+          className="w-4 h-4 ml-1 text-slate-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M5 12l5 5 5-5H5zm10-4L10 3 5 8h10z" />
+        </svg>
+      );
+    }
+    return sortDirection === "asc" ? (
+      <svg
+        className="w-4 h-4 ml-1 text-blue-600"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M5 12l5 5 5-5H5z" opacity="0.3" />
+        <path d="M15 8L10 3 5 8h10z" />
+      </svg>
+    ) : (
+      <svg
+        className="w-4 h-4 ml-1 text-blue-600"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M15 8L10 3 5 8h10z" opacity="0.3" />
+        <path d="M5 12l5 5 5-5H5z" />
+      </svg>
+    );
+  };
+
   if (!branchModalData) return null;
 
   return (
@@ -65,34 +161,82 @@ const BranchMLOModal = ({ branchModalData, onClose, onMLOClick }) => {
             <table className="w-full">
               <thead className="bg-slate-200 sticky top-0">
                 <tr>
-                  <th className="px-4 py-3 text-left text-sm font-bold text-slate-700">
-                    MLO NMLS ID
+                  <th
+                    className="px-4 py-3 text-left text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("mloId")}
+                  >
+                    <div className="flex items-center">
+                      MLO NMLS ID
+                      <SortIcon column="mloId" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Total Loans
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("total")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Total Loans
+                      <SortIcon column="total" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Passed
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("passed")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Passed
+                      <SortIcon column="passed" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Warnings
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("warned")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Warnings
+                      <SortIcon column="warned" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Failed
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("failed")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Failed
+                      <SortIcon column="failed" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Pass Rate
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("passRate")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Pass Rate
+                      <SortIcon column="passRate" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Warn Rate
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("warnRate")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Warn Rate
+                      <SortIcon column="warnRate" />
+                    </div>
                   </th>
-                  <th className="px-4 py-3 text-center text-sm font-bold text-slate-700">
-                    Fail Rate
+                  <th
+                    className="px-4 py-3 text-center text-sm font-bold text-slate-700 cursor-pointer hover:bg-slate-300 transition-colors"
+                    onClick={() => handleSort("failRate")}
+                  >
+                    <div className="flex items-center justify-center">
+                      Fail Rate
+                      <SortIcon column="failRate" />
+                    </div>
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {branchModalData.mloData.map((mlo) => (
+                {sortedMloData.map((mlo) => (
                   <tr
                     key={mlo.mloId}
                     className="border-b border-slate-200 hover:bg-slate-50"
