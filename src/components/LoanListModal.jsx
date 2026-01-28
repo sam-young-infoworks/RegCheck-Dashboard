@@ -38,8 +38,7 @@ const LoanListModal = ({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl w-full max-w-6xl shadow-2xl overflow-hidden"
-        style={{ maxHeight: "calc(100vh - 2rem)" }}
+        className="bg-white rounded-2xl w-full max-w-6xl shadow-2xl overflow-hidden modal-container"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between p-6 border-b border-slate-200 bg-white">
@@ -76,10 +75,7 @@ const LoanListModal = ({
           </p>
         </div>
 
-        <div
-          className="overflow-auto"
-          style={{ maxHeight: "calc(100vh - 20rem)" }}
-        >
+        <div className="overflow-auto modal-content-scroll">
           {modalData.loans.length === 0 ? (
             <div className="text-center py-12 text-slate-500 text-lg">
               No loans found with this status
@@ -130,21 +126,7 @@ const LoanListModal = ({
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleLoanLinkClick(loan.id)}
-                          style={{
-                            color: "#2563eb",
-                            fontWeight: "600",
-                            cursor: "pointer",
-                            textDecoration: "underline",
-                            background: "none",
-                            border: "none",
-                            padding: 0,
-                          }}
-                          onMouseEnter={(e) =>
-                            (e.target.style.color = "#1d4ed8")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.target.style.color = "#2563eb")
-                          }
+                          className="loan-link-button"
                         >
                           {loan.id}
                         </button>

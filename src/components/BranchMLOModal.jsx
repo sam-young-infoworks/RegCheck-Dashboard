@@ -116,8 +116,7 @@ const BranchMLOModal = ({ branchModalData, onClose, onMLOClick }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden"
-        style={{ maxHeight: "calc(100vh - 2rem)" }}
+        className="bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden modal-container"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between p-6 border-b border-slate-200 bg-white">
@@ -160,10 +159,7 @@ const BranchMLOModal = ({ branchModalData, onClose, onMLOClick }) => {
           </p>
         </div>
 
-        <div
-          className="overflow-auto"
-          style={{ maxHeight: "calc(100vh - 20rem)" }}
-        >
+        <div className="overflow-auto modal-content-scroll">
           {branchModalData.mloData.length === 0 ? (
             <div className="text-center py-12 text-slate-500 text-lg">
               No loan officers found

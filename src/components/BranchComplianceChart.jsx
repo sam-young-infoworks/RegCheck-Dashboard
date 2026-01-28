@@ -21,7 +21,6 @@ const BranchComplianceChart = ({ branchStats, onBranchBarClick }) => {
           <XAxis
             dataKey="name"
             stroke="#64748b"
-            style={{ fontSize: "12px" }}
             tick={(props) => {
               const { x, y, payload } = props;
               const isAllBranches = payload.value === "All Branches";
@@ -49,15 +48,10 @@ const BranchComplianceChart = ({ branchStats, onBranchBarClick }) => {
               value: "Percentage (%)",
               angle: -90,
               position: "insideLeft",
-              style: { fill: "#64748b" },
+              fill: "#64748b",
             }}
           />
           <Tooltip
-            contentStyle={{
-              backgroundColor: "white",
-              border: "1px solid #e2e8f0",
-              borderRadius: "8px",
-            }}
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 const data = payload[0].payload;
