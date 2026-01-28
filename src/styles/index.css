@@ -1,4 +1,5 @@
 @import "./table.css";
+@import "./heatmap.css";
 
 @tailwind base;
 @tailwind components;
