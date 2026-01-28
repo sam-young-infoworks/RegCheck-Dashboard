@@ -88,67 +88,65 @@ const LoanAttributeFilters = ({
   };
 
   return (
-    <div className="filter-container" ref={containerRef}>
-      <div className="filter-wrapper">
-        <span className="filter-label">Loan Attribute Filters:</span>
+    <div className="filter-wrapper" ref={containerRef}>
+      <span className="filter-label">Loan Attribute Filters:</span>
 
-        <FilterDropdown
-          name="amortizationType"
-          label="Amortization Type"
-          options={[
-            { value: "Fixed", label: "Fixed" },
-            { value: "ARM", label: "ARM" },
-            { value: "Interest Only", label: "Interest Only" },
-          ]}
-        />
+      <FilterDropdown
+        name="amortizationType"
+        label="Amortization Type"
+        options={[
+          { value: "Fixed", label: "Fixed" },
+          { value: "ARM", label: "ARM" },
+          { value: "Interest Only", label: "Interest Only" },
+        ]}
+      />
 
-        <FilterDropdown
-          name="loanTerm"
-          label="Loan Term"
-          options={[
-            { value: "15", label: "15 Years" },
-            { value: "20", label: "20 Years" },
-            { value: "30", label: "30 Years" },
-          ]}
-        />
+      <FilterDropdown
+        name="loanTerm"
+        label="Loan Term"
+        options={[
+          { value: "15", label: "15 Years" },
+          { value: "20", label: "20 Years" },
+          { value: "30", label: "30 Years" },
+        ]}
+      />
 
-        <FilterDropdown
-          name="loanType"
-          label="Loan Type"
-          options={[
-            { value: "Conventional", label: "Conventional" },
-            { value: "FHA", label: "FHA" },
-            { value: "VA", label: "VA" },
-            { value: "USDA", label: "USDA" },
-          ]}
-        />
+      <FilterDropdown
+        name="loanType"
+        label="Loan Type"
+        options={[
+          { value: "Conventional", label: "Conventional" },
+          { value: "FHA", label: "FHA" },
+          { value: "VA", label: "VA" },
+          { value: "USDA", label: "USDA" },
+        ]}
+      />
 
-        <FilterDropdown
-          name="purpose"
-          label="Purpose"
-          options={[
-            { value: "Purchase", label: "Purchase" },
-            { value: "Refinance", label: "Refinance" },
-            { value: "Cash-Out Refi", label: "Cash-Out Refi" },
-          ]}
-        />
+      <FilterDropdown
+        name="purpose"
+        label="Purpose"
+        options={[
+          { value: "Purchase", label: "Purchase" },
+          { value: "Refinance", label: "Refinance" },
+          { value: "Cash-Out Refi", label: "Cash-Out Refi" },
+        ]}
+      />
 
-        <FilterDropdown
-          name="occupancy"
-          label="Occupancy"
-          options={[
-            { value: "Owner", label: "Owner" },
-            { value: "Non-Owner", label: "Non-Owner" },
-            { value: "Investment", label: "Investment" },
-          ]}
-        />
+      <FilterDropdown
+        name="occupancy"
+        label="Occupancy"
+        options={[
+          { value: "Owner", label: "Owner" },
+          { value: "Non-Owner", label: "Non-Owner" },
+          { value: "Investment", label: "Investment" },
+        ]}
+      />
 
-        {hasActiveFilters && (
-          <button onClick={handleClear} className="filter-clear-button">
-            Clear Loan Attributes
-          </button>
-        )}
-      </div>
+      {hasActiveFilters && (
+        <button onClick={handleClear} className="filter-clear-button">
+          Clear Loan Attributes
+        </button>
+      )}
     </div>
   );
 };

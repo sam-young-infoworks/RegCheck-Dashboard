@@ -295,7 +295,7 @@ const MortgageComplianceDashboard = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
-      <div className="max-w-[1600px] mx-auto">
+      <div className="max-w-[1600px] mx-auto flow flow-space-lg">
         <DashboardHeader portfolioStats={portfolioStats} />
 
         <BranchComplianceChart
@@ -310,19 +310,27 @@ const MortgageComplianceDashboard = ({
           onCellClick={handleHeatmapCellClick}
         />
 
-        <BranchMLOFilters
-          filters={filters}
-          availableBranches={availableBranches}
-          availableMLOs={availableMLOs}
-          onFilterChange={handleFilterChange}
-        />
+        <h2
+          id="policy-compliance-results"
+          className="text-xl font-bold text-slate-900 mb-4"
+        >
+          Policy Compliance Testing Results
+        </h2>
+        <div className="filter-container flow">
+          <BranchMLOFilters
+            filters={filters}
+            availableBranches={availableBranches}
+            availableMLOs={availableMLOs}
+            onFilterChange={handleFilterChange}
+          />
 
-        <LoanAttributeFilters
-          filters={filters}
-          openDropdown={openDropdown}
-          onFilterChange={handleFilterChange}
-          onToggleDropdown={toggleDropdown}
-        />
+          <LoanAttributeFilters
+            filters={filters}
+            openDropdown={openDropdown}
+            onFilterChange={handleFilterChange}
+            onToggleDropdown={toggleDropdown}
+          />
+        </div>
 
         <PolicyComplianceSection
           policyStats={policyStats}

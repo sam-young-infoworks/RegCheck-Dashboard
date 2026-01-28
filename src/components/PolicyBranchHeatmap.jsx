@@ -144,13 +144,13 @@ const PolicyBranchHeatmap = ({
         </div>
       </div>
 
-      <div className="heatmap-info-box">
-        <p className="heatmap-info-text">
-          <span className="heatmap-info-text-federal">Federal Policies</span>{" "}
-          are shown first, followed by{" "}
-          <span className="heatmap-info-text-state">State Policies (Iowa)</span>
-        </p>
-      </div>
+      {/* <div className="heatmap-info-box"> */}
+      <small className="heatmap-info-text">
+        <span className="heatmap-info-text-federal">Federal Policies</span> are
+        shown first, followed by{" "}
+        <span className="heatmap-info-text-state">State Policies (Iowa)</span>
+      </small>
+      {/* </div> */}
     </div>
   );
 };

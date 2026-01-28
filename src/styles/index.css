@@ -81,6 +81,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Flow Layout - Consistent vertical spacing between elements */
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.flow-space-lg {
+  --flow-space: 1.3em;
+}
+
 /* Modal Styles */
 .modal-container {
   max-height: var(--modal-max-height);
@@ -144,7 +153,6 @@ body {
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  margin-bottom: 1.5rem;
 }
 
 /* Loan Link Button */
