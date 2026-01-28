@@ -9,7 +9,7 @@ import {
 
 const PolicyComplianceSection = ({
   policyStats,
-  expandedPolicy,
+  expandedPolicies,
   onTogglePolicy,
   onOpenModal,
   isState = false,
@@ -22,7 +22,7 @@ const PolicyComplianceSection = ({
       <div className="space-y-2">
         {policyStats.map((policy) => {
           const policyKey = isState ? `state-${policy.name}` : policy.name;
-          const isExpanded = expandedPolicy === policyKey;
+          const isExpanded = expandedPolicies.has(policyKey);
 
           return (
             <div

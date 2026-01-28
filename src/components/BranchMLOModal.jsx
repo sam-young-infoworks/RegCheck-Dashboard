@@ -4,6 +4,17 @@ const BranchMLOModal = ({ branchModalData, onClose, onMLOClick }) => {
   const [sortColumn, setSortColumn] = useState("total");
   const [sortDirection, setSortDirection] = useState("desc");
 
+  const handleMLOClick = (branchName, mloId) => {
+    onMLOClick(branchName, mloId);
+    // Scroll to the policy compliance section after a brief delay to allow the modal to close
+    setTimeout(() => {
+      const element = document.getElementById("policy-compliance-results");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   const handleSort = (column) => {
     if (sortColumn === column) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc");
@@ -244,7 +255,7 @@ const BranchMLOModal = ({ branchModalData, onClose, onMLOClick }) => {
                     <td className="px-4 py-3 text-sm">
                       <button
                         onClick={() =>
-                          onMLOClick(branchModalData.branchName, mlo.mloId)
+                          handleMLOClick(branchModalData.branchName, mlo.mloId)
                         }
                         className="font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer"
                       >

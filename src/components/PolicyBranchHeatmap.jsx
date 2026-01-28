@@ -1,7 +1,12 @@
 import React from "react";
 import { getHeatmapColor } from "../utils/statusHelpers";
 
-const PolicyBranchHeatmap = ({ heatmapData, policySets, statePolicySets }) => {
+const PolicyBranchHeatmap = ({
+  heatmapData,
+  policySets,
+  statePolicySets,
+  onCellClick,
+}) => {
   return (
     <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200 mb-6">
       <div className="mb-4">
@@ -83,6 +88,9 @@ const PolicyBranchHeatmap = ({ heatmapData, policySets, statePolicySets }) => {
                       className="hover:opacity-80 cursor-pointer transition-opacity"
                       stroke="#e2e8f0"
                       strokeWidth="1"
+                      onClick={() =>
+                        onCellClick(branch, row.policyName, row.isState)
+                      }
                     />
                     <text
                       x={150 + colIdx * 100 + 49}

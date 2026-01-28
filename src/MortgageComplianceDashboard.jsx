@@ -42,7 +42,7 @@ const MortgageComplianceDashboard = ({
     occupancy: [],
   });
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [expandedPolicy, setExpandedPolicy] = useState(null);
+  const [expandedPolicies, setExpandedPolicies] = useState(new Set());
   const [showLoanTable, setShowLoanTable] = useState(false);
   const [loanTableSearchTerm, setLoanTableSearchTerm] = useState("");
   const [modalData, setModalData] = useState(null);
@@ -130,6 +130,18 @@ const MortgageComplianceDashboard = ({
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
+  const handleTogglePolicy = (policyKey) => {
+    setExpandedPolicies((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(policyKey)) {
+        newSet.delete(policyKey);
+      } else {
+        newSet.add(policyKey);
+      }
+      return newSet;
+    });
+  };
+
   const openModal = (policyName, ruleName, status, isState = false) => {
     const loans = filteredLoans.filter((loan) => {
       if (ruleName) {
@@ -162,7 +174,6 @@ const MortgageComplianceDashboard = ({
   };
 
   const handleLoanClick = (loanId) => {
-    console.log("Loan clicked:", loanId);
     setModalData(null);
     setShowLoanTable(true);
     setLoanTableSearchTerm(loanId);
@@ -249,6 +260,28 @@ const MortgageComplianceDashboard = ({
     }));
   };
 
+  const handleHeatmapCellClick = (branchName, policyName, isState) => {
+    setFilters((prev) => ({
+      ...prev,
+      branch: branchName !== "All Branches" ? branchName : "",
+    }));
+
+    // Open only the corresponding policy accordion, close all others
+    const policyKey = isState ? `state-${policyName}` : policyName;
+    setExpandedPolicies(new Set([policyKey]));
+
+    // Scroll to the policy section after a brief delay
+    setTimeout(() => {
+      const elementId = isState
+        ? `state-policy-${policyName}`
+        : `policy-${policyName}`;
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   const handleOpenImageModal = (imageUrl) => {
     setCurrentImageUrl(imageUrl);
     setImageModalOpen(true);
@@ -273,11 +306,9 @@ const MortgageComplianceDashboard = ({
           heatmapData={policyBranchHeatmapData}
           policySets={policySets}
           statePolicySets={statePolicySets}
+          onCellClick={handleHeatmapCellClick}
         />
 
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
-          Policy Compliance Testing Results
-        </h2>
         <BranchMLOFilters
           filters={filters}
           availableBranches={availableBranches}
@@ -294,16 +325,16 @@ const MortgageComplianceDashboard = ({
 
         <PolicyComplianceSection
           policyStats={policyStats}
-          expandedPolicy={expandedPolicy}
-          onTogglePolicy={setExpandedPolicy}
+          expandedPolicies={expandedPolicies}
+          onTogglePolicy={handleTogglePolicy}
           onOpenModal={openModal}
           isState={false}
         />
 
         <PolicyComplianceSection
           policyStats={statePolicyStats}
-          expandedPolicy={expandedPolicy}
-          onTogglePolicy={setExpandedPolicy}
+          expandedPolicies={expandedPolicies}
+          onTogglePolicy={handleTogglePolicy}
           onOpenModal={openModal}
           isState={true}
         />
