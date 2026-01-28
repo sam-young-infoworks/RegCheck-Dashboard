@@ -18,7 +18,28 @@ const BranchComplianceChart = ({ branchStats, onBranchBarClick }) => {
       <ResponsiveContainer width="100%" height={400}>
         <BarChart data={branchStats}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="name" stroke="#64748b" style={{ fontSize: "12px" }} />
+          <XAxis
+            dataKey="name"
+            stroke="#64748b"
+            style={{ fontSize: "12px" }}
+            tick={(props) => {
+              const { x, y, payload } = props;
+              const isAllBranches = payload.value === "All Branches";
+              return (
+                <text
+                  x={x}
+                  y={y}
+                  dy={16}
+                  textAnchor="middle"
+                  fill="#64748b"
+                  fontSize="12px"
+                  fontWeight={isAllBranches ? "800" : "normal"}
+                >
+                  {isAllBranches ? payload.value.toUpperCase() : payload.value}
+                </text>
+              );
+            }}
+          />
           <YAxis
             stroke="#64748b"
             domain={[0, 100]}

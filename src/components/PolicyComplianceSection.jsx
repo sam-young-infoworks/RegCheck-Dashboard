@@ -17,7 +17,7 @@ const PolicyComplianceSection = ({
   return (
     <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200 mb-6">
       <h3 className="text-xl font-bold text-slate-900 mb-4">
-        {isState ? "State Policy - Iowa (IA)" : "Federal Policy"}
+        {isState ? "State Policies - Iowa (IA)" : "Federal Policies"}
       </h3>
       <div className="space-y-2">
         {policyStats.map((policy) => {

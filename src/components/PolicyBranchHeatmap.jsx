@@ -25,18 +25,22 @@ const PolicyBranchHeatmap = ({
           height={heatmapData.data.length * 45 + 100}
         >
           {/* Column headers */}
-          {heatmapData.branches.map((branch, i) => (
-            <g key={branch}>
-              <text
-                x={150 + i * 100 + 50}
-                y={40}
-                textAnchor="middle"
-                className="text-xs font-bold fill-slate-700"
-              >
-                {branch}
-              </text>
-            </g>
-          ))}
+          {heatmapData.branches.map((branch, i) => {
+            const isAllBranches = branch === "All Branches";
+            return (
+              <g key={branch}>
+                <text
+                  x={150 + i * 100 + 50}
+                  y={40}
+                  textAnchor="middle"
+                  className="text-xs fill-slate-600"
+                  fontWeight={isAllBranches ? "800" : "600"}
+                >
+                  {isAllBranches ? branch.toUpperCase() : branch}
+                </text>
+              </g>
+            );
+          })}
 
           {/* Federal label */}
           <text x={5} y={65} className="text-xs font-bold fill-emerald-700">

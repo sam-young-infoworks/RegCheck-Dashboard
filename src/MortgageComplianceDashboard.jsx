@@ -264,6 +264,7 @@ const MortgageComplianceDashboard = ({
     setFilters((prev) => ({
       ...prev,
       branch: branchName !== "All Branches" ? branchName : "",
+      mlo: "", // Clear MLO filter when clicking heatmap
     }));
 
     // Open only the corresponding policy accordion, close all others
