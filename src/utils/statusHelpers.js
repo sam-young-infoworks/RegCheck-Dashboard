@@ -1,18 +1,16 @@
-import { CheckCircle, AlertTriangle, AlertCircle } from "lucide-react";
-
 /**
  * Get color classes for a given status
  */
 export const getStatusColor = (status) => {
   switch (status) {
     case "pass":
-      return "text-emerald-600 bg-emerald-100";
+      return "status-badge status-badge--pass";
     case "warn":
-      return "text-amber-600 bg-amber-100";
+      return "status-badge status-badge--warn";
     case "fail":
-      return "text-red-600 bg-red-100";
+      return "status-badge status-badge--fail";
     default:
-      return "text-slate-600 bg-slate-100";
+      return "status-badge status-badge--neutral";
   }
 };
 

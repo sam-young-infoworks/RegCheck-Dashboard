@@ -1,11 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./styles/index.css";
-import App from "./App";
+import { createApp } from "vue";
+import App from "./App.vue";
+import "./styles/main.scss";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+createApp(App).mount("#root");
